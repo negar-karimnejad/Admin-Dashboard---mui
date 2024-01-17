@@ -1,16 +1,18 @@
 import {
-    DarkModeOutlined,
-    NotificationsOutlined,
-    PersonOutlined,
-    Search,
-    SettingsOutlined,
+  DarkModeOutlined,
+  LightModeOutlined,
+  NotificationsOutlined,
+  PersonOutlined,
+  Search,
+  SettingsOutlined,
 } from "@mui/icons-material";
 import { Box, FormControl, InputBase } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Colors } from "../theme/Colors";
-import { theme } from "../theme/theme";
+import { theme, toggleDarkMode } from "../theme/theme";
 
-function Topbar() {
+// eslint-disable-next-line react/prop-types
+function Topbar({ darkMode, setDarkMode }) {
   const TopbarInput = styled(InputBase)(({ theme }) => ({
     borderRadius: 4,
     backgroundColor: Colors(theme.palette.mode).primary[400],
@@ -18,11 +20,6 @@ function Topbar() {
     width: "auto",
     padding: "4px 12px",
   }));
-
-  const changeMode = () => {
-    theme.palette.mode === "dark" ? "light" : "dark";
-    console.log(theme.palette.mode);
-  };
 
   return (
     <Box
@@ -49,7 +46,9 @@ function Topbar() {
         />
       </FormControl>
       <Box sx={{ display: "flex", gap: 2 }}>
-        <DarkModeOutlined onChange={changeMode} />
+        <Box onClick={() => toggleDarkMode(setDarkMode)}>
+          {darkMode ? <DarkModeOutlined /> : <LightModeOutlined />}
+        </Box>
         <NotificationsOutlined />
         <SettingsOutlined />
         <PersonOutlined />

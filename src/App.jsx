@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRoutes } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
@@ -11,10 +11,11 @@ import { theme } from "./theme/theme";
 
 function App() {
   const router = useRoutes(routes);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    theme.palette.mode === "dark" ? "light" : "dark";
-  }, []);
+    theme.palette.mode = darkMode ? "dark" : "light";
+  }, [darkMode]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -28,7 +29,7 @@ function App() {
       >
         <Box display={"flex"}>
           <Sidebar />
-          <Topbar />
+          <Topbar darkMode={darkMode} setDarkMode={setDarkMode} />
         </Box>
         {router}
       </Box>

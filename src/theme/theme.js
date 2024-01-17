@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { styled, createTheme } from "@mui/material/styles";
+import { createTheme, styled } from "@mui/material/styles";
 import { Colors } from "./Colors";
 
 export const theme = createTheme({
@@ -7,6 +7,9 @@ export const theme = createTheme({
     mode: "dark",
   },
 });
+export const toggleDarkMode = (setDarkMode) => {
+  setDarkMode((prev) => !prev);
+};
 
 // SIDEBAR
 export const SidebarBox = styled(Box)(({ theme }) => ({
