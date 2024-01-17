@@ -1,46 +1,33 @@
-import {
-  BarChartOutlined,
-  CalendarTodayOutlined,
-  ContactsOutlined,
-  HelpOutlineOutlined,
-  HomeOutlined,
-  Map,
-  Menu,
-  PersonOutlined,
-  PieChartOutlined,
-  ReceiptOutlined,
-  TimelineOutlined,
-} from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import user from "../assets/user.png";
+import { menuList } from "../data/data";
 import { Colors } from "../theme/Colors";
-import { theme } from "../theme/theme";
+import { SidebarBox, SidebarMenuTitle, theme } from "../theme/theme";
 import SidebarMenuBox from "./SidebarMenuBox";
+import { Menu } from "@mui/icons-material";
 
 function Sidebar() {
-  const SidebarBox = styled(Box)(({ theme }) => ({
-    backgroundColor: Colors(theme.palette.mode).primary[400],
-    color: Colors(theme.palette.mode).primary[100],
-    width: 280,
-    padding: theme.spacing(2, 4),
-    display: "flex",
-    flexDirection: "column",
-    gap: theme.spacing(0.5),
-  }));
-  const SidebarMenuTitle = styled(Typography)(({ theme }) => ({
-    color: Colors(theme.palette.mode).primary[300],
-    fontSize: 12,
-    fontWeight: "bold",
-    marginTop: theme.spacing(1),
-  }));
+  const content = menuList.map((list) => {
+    if (list.section) {
+      return list.section.map((sec, index) => (
+        <>
+          <SidebarMenuTitle key={index}>{sec.title}</SidebarMenuTitle>
+          {sec.item?.map((inner) => (
+            <SidebarMenuBox
+              key={inner.id}
+              title={inner.item}
+              icon={inner.icon}
+            />
+          ))}
+        </>
+      ));
+    } else if (!list.section) {
+      return (
+        <SidebarMenuBox key={list.id} title={list.item} icon={list.icon} />
+      );
+    }
+  });
 
-  const menuList = [
-    {id:1,},
-    {id:2},
-    {id:3},
-    {id:4},
-  ]
   return (
     <SidebarBox>
       <Box
@@ -75,49 +62,7 @@ function Sidebar() {
           VP Fancy Admin
         </span>
       </Box>
-      <SidebarMenuBox
-        title="Dashboard"
-        icon={<HomeOutlined sx={{ width: 20 }} />}
-      />
-      <SidebarMenuTitle>Data</SidebarMenuTitle>
-      <SidebarMenuBox
-        title="Contacts Information"
-        icon={<ContactsOutlined />}
-      />
-      <SidebarMenuBox
-        title="Invoices Balances"
-        icon={<ReceiptOutlined sx={{ width: 20 }} />}
-      />
-      <SidebarMenuTitle>Pages</SidebarMenuTitle>
-      <SidebarMenuBox
-        title="Profile Form"
-        icon={<PersonOutlined sx={{ width: 20 }} />}
-      />
-      <SidebarMenuBox
-        title="Calender"
-        icon={<CalendarTodayOutlined sx={{ width: 20 }} />}
-      />
-      <SidebarMenuBox
-        title="FAQ Page"
-        icon={<HelpOutlineOutlined sx={{ width: 20 }} />}
-      />
-      <SidebarMenuTitle>Charts</SidebarMenuTitle>
-      <SidebarMenuBox
-        title="Bar Chart"
-        icon={<BarChartOutlined sx={{ width: 20 }} />}
-      />
-      <SidebarMenuBox
-        title="Pie Chart"
-        icon={<PieChartOutlined sx={{ width: 20 }} />}
-      />
-      <SidebarMenuBox
-        title="Line Chart"
-        icon={<TimelineOutlined sx={{ width: 20 }} />}
-      />
-      <SidebarMenuBox
-        title="Geography Chart"
-        icon={<Map sx={{ width: 20 }} />}
-      />
+      {content}
     </SidebarBox>
   );
 }
