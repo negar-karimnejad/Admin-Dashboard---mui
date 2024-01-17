@@ -1,17 +1,18 @@
+import { Menu } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
+import React from "react";
 import user from "../assets/user.png";
 import { menuList } from "../data/data";
 import { Colors } from "../theme/Colors";
 import { SidebarBox, SidebarMenuTitle, theme } from "../theme/theme";
 import SidebarMenuBox from "./SidebarMenuBox";
-import { Menu } from "@mui/icons-material";
 
 function Sidebar() {
   const content = menuList.map((list) => {
     if (list.section) {
       return list.section.map((sec, index) => (
-        <>
-          <SidebarMenuTitle key={index}>{sec.title}</SidebarMenuTitle>
+        <React.Fragment key={index}>
+          <SidebarMenuTitle>{sec.title}</SidebarMenuTitle>
           {sec.item?.map((inner) => (
             <SidebarMenuBox
               key={inner.id}
@@ -19,7 +20,7 @@ function Sidebar() {
               icon={inner.icon}
             />
           ))}
-        </>
+        </React.Fragment>
       ));
     } else if (!list.section) {
       return (
@@ -43,7 +44,12 @@ function Sidebar() {
         <Menu />
       </Box>
       <Box
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginBottom: 3,
+        }}
       >
         <img width={80} src={user} alt="User" style={{ marginBottom: 2 }} />
         <Typography

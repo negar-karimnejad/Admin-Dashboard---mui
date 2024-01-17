@@ -1,21 +1,12 @@
-import { Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { CustomSidebarMenuBox } from "../theme/theme";
 
 // eslint-disable-next-line react/prop-types
 function SidebarMenuBox({ title, icon }) {
-  console.log(icon);
-  const SidebarMenuBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    fontWeight: "bold",
-    fontSize: 13,
-    gap: theme.spacing(3),
-  }));
   return (
-    <SidebarMenuBox>
+    <CustomSidebarMenuBox>
       {icon}
       {title}
-    </SidebarMenuBox>
+    </CustomSidebarMenuBox>
   );
 }
 
