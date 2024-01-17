@@ -6,7 +6,6 @@ import {
   HomeOutlined,
   Map,
   Menu,
-  PeopleOutlined,
   PersonOutlined,
   PieChartOutlined,
   ReceiptOutlined,
@@ -17,23 +16,31 @@ import { styled } from "@mui/material/styles";
 import user from "../assets/user.png";
 import { Colors } from "../theme/Colors";
 import { theme } from "../theme/theme";
+import SidebarMenuBox from "./SidebarMenuBox";
 
 function Sidebar() {
   const SidebarBox = styled(Box)(({ theme }) => ({
     backgroundColor: Colors(theme.palette.mode).primary[400],
     color: Colors(theme.palette.mode).primary[100],
     width: 280,
-    padding: theme.spacing(4),
+    padding: theme.spacing(2, 4),
     display: "flex",
     flexDirection: "column",
-    gap: theme.spacing(2),
+    gap: theme.spacing(0.5),
   }));
-  const SidebarMenuBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    gap: theme.spacing(2),
+  const SidebarMenuTitle = styled(Typography)(({ theme }) => ({
+    color: Colors(theme.palette.mode).primary[300],
+    fontSize: 12,
+    fontWeight: "bold",
+    marginTop: theme.spacing(1),
   }));
 
+  const menuList = [
+    {id:1,},
+    {id:2},
+    {id:3},
+    {id:4},
+  ]
   return (
     <SidebarBox>
       <Box
@@ -43,88 +50,74 @@ function Sidebar() {
           justifyContent: "space-between",
         }}
       >
-        <Typography variant="body1" color="initial">
-          ADMIN
+        <Typography variant="body1" sx={{ fontWeight: "600" }}>
+          ADMINS
         </Typography>
         <Menu />
       </Box>
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >
-        <img src={user} alt="User" style={{ marginBottom: 10 }} />
+        <img width={80} src={user} alt="User" style={{ marginBottom: 2 }} />
         <Typography
-          variant="h4"
+          variant="h5"
           color={Colors(theme.palette.mode).grey[100]}
           fontWeight={"bold"}
         >
           Ed Roh
         </Typography>
-        <span style={{ color: Colors(theme.palette.mode).greenAccent[500] }}>
+        <span
+          style={{
+            color: Colors(theme.palette.mode).greenAccent[500],
+            fontSize: 12,
+          }}
+        >
           VP Fancy Admin
         </span>
       </Box>
-      <SidebarMenuBox>
-        <HomeOutlined />
-        Dashboard
-      </SidebarMenuBox>
-      <Typography
-        variant="body1"
-        color={Colors(theme.palette.mode).primary[300]}
-      >
-        Data
-      </Typography>
-      <SidebarMenuBox>
-        <PeopleOutlined />
-        Manage Team
-      </SidebarMenuBox>
-      <SidebarMenuBox>
-        <ContactsOutlined />
-        Contacts Information
-      </SidebarMenuBox>
-      <SidebarMenuBox>
-        <ReceiptOutlined />
-        Invoices Balances
-      </SidebarMenuBox>
-      <Typography
-        variant="body1"
-        color={Colors(theme.palette.mode).primary[300]}
-      >
-        Pages
-      </Typography>
-      <SidebarMenuBox>
-        <PersonOutlined />
-        Profile Form
-      </SidebarMenuBox>
-      <SidebarMenuBox>
-        <CalendarTodayOutlined />
-        Calender
-      </SidebarMenuBox>
-      <SidebarMenuBox>
-        <HelpOutlineOutlined />
-        FAQ Page
-      </SidebarMenuBox>
-      <Typography
-        variant="body1"
-        color={Colors(theme.palette.mode).primary[300]}
-      >
-        Charts
-      </Typography>
-      <SidebarMenuBox>
-        <BarChartOutlined />
-        Bar Chart
-      </SidebarMenuBox>
-      <SidebarMenuBox>
-        <PieChartOutlined />
-        Pie Chart
-      </SidebarMenuBox>
-      <SidebarMenuBox>
-        <TimelineOutlined />
-        Line Chart
-      </SidebarMenuBox>
-      <SidebarMenuBox>
-        <Map />
-        Geography Chart
-      </SidebarMenuBox>
+      <SidebarMenuBox
+        title="Dashboard"
+        icon={<HomeOutlined sx={{ width: 20 }} />}
+      />
+      <SidebarMenuTitle>Data</SidebarMenuTitle>
+      <SidebarMenuBox
+        title="Contacts Information"
+        icon={<ContactsOutlined />}
+      />
+      <SidebarMenuBox
+        title="Invoices Balances"
+        icon={<ReceiptOutlined sx={{ width: 20 }} />}
+      />
+      <SidebarMenuTitle>Pages</SidebarMenuTitle>
+      <SidebarMenuBox
+        title="Profile Form"
+        icon={<PersonOutlined sx={{ width: 20 }} />}
+      />
+      <SidebarMenuBox
+        title="Calender"
+        icon={<CalendarTodayOutlined sx={{ width: 20 }} />}
+      />
+      <SidebarMenuBox
+        title="FAQ Page"
+        icon={<HelpOutlineOutlined sx={{ width: 20 }} />}
+      />
+      <SidebarMenuTitle>Charts</SidebarMenuTitle>
+      <SidebarMenuBox
+        title="Bar Chart"
+        icon={<BarChartOutlined sx={{ width: 20 }} />}
+      />
+      <SidebarMenuBox
+        title="Pie Chart"
+        icon={<PieChartOutlined sx={{ width: 20 }} />}
+      />
+      <SidebarMenuBox
+        title="Line Chart"
+        icon={<TimelineOutlined sx={{ width: 20 }} />}
+      />
+      <SidebarMenuBox
+        title="Geography Chart"
+        icon={<Map sx={{ width: 20 }} />}
+      />
     </SidebarBox>
   );
 }
