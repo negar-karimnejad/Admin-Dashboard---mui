@@ -8,15 +8,12 @@ export const theme = createTheme({
     mode: "dark",
   },
 });
-export const toggleDarkMode = (setDarkMode) => {
-  setDarkMode((prev) => !prev);
-};
 
 // SIDEBAR
 export const SidebarBox = styled(Box)(({ theme }) => ({
   backgroundColor: Colors(theme.palette.mode).primary[400],
   color: Colors(theme.palette.mode).grey[400],
-  width: 350,
+  width: 300,
   padding: theme.spacing(2, 2, 2, 3),
   display: "flex",
   flexDirection: "column",

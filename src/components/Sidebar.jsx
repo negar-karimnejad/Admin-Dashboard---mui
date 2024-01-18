@@ -25,7 +25,12 @@ function Sidebar() {
       ));
     } else if (!list.section) {
       return (
-        <SidebarMenuBox key={list.id} title={list.item} icon={list.icon} link={list.link}/>
+        <SidebarMenuBox
+          key={list.id}
+          title={list.item}
+          icon={list.icon}
+          link={list.link}
+        />
       );
     }
   });
