@@ -1,4 +1,3 @@
-
 export const Colors = (theme) => ({
   ...(theme === "dark"
     ? {
@@ -75,7 +74,7 @@ export const Colors = (theme) => ({
           200: "#080b12",
           300: "#0c101b",
           400: "#f2f0f0", // manually changed
-          500: "#141b2d",
+          500: "#fafafa",
           600: "#1F2A40",
           700: "#727681",
           800: "#a1a4ab",

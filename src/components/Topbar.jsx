@@ -16,6 +16,7 @@ function Topbar({ darkMode, setDarkMode }) {
   const TopbarInput = styled(InputBase)(({ theme }) => ({
     borderRadius: 4,
     backgroundColor: Colors(theme.palette.mode).primary[400],
+    color: Colors(theme.palette.mode).grey[500],
     fontSize: 16,
     width: "auto",
     padding: "4px 12px",
@@ -30,6 +31,7 @@ function Topbar({ darkMode, setDarkMode }) {
         width: "100%",
         height: 70,
         paddingX: 5,
+        color: Colors(theme.palette.mode).grey[400],
       }}
     >
       <FormControl variant="standard" sx={{ position: "relative" }}>
@@ -41,7 +43,6 @@ function Topbar({ darkMode, setDarkMode }) {
             bottom: 0,
             margin: "auto",
             right: 10,
-            color: Colors(theme.palette.mode).primary[100],
           }}
         />
       </FormControl>

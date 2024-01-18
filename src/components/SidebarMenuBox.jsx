@@ -1,9 +1,9 @@
 import { CustomSidebarMenuBox } from "../theme/theme";
 
 // eslint-disable-next-line react/prop-types
-function SidebarMenuBox({ title, icon }) {
+function SidebarMenuBox({ title, icon, link }) {
   return (
-    <CustomSidebarMenuBox>
+    <CustomSidebarMenuBox to={link}>
       {icon}
       {title}
     </CustomSidebarMenuBox>

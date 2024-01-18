@@ -24,7 +24,7 @@ function App() {
         sx={{
           width: "100%",
           height: "100vh",
-          bgcolor: Colors(theme.palette.mode).primary[600],
+          bgcolor: Colors(theme.palette.mode).primary[500],
         }}
       >
         <Box display={"flex"}>

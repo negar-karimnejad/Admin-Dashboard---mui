@@ -18,13 +18,14 @@ function Sidebar() {
               key={inner.id}
               title={inner.item}
               icon={inner.icon}
+              link={inner.link}
             />
           ))}
         </React.Fragment>
       ));
     } else if (!list.section) {
       return (
-        <SidebarMenuBox key={list.id} title={list.item} icon={list.icon} />
+        <SidebarMenuBox key={list.id} title={list.item} icon={list.icon} link={list.link}/>
       );
     }
   });
